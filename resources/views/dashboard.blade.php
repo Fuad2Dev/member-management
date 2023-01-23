@@ -5,7 +5,7 @@
                 {{ __('Members') }}
             </h2>
 
-
+            <x-link :route="route('member.create')">add</x-link>
         </div>
     </x-slot>
 
