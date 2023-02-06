@@ -15,7 +15,7 @@
             <table class="w-full border text-center">
                 <thead class="border-b">
                     <tr class="bg-gray-800">
-                        @foreach (['staff ID', 'name', 'certificate taken'] as $item)
+                        @foreach (['staff ID', 'name', 'email', 'certificate taken', ''] as $item)
                             <th scope="col" class="text-white font-medium px-4 py-2 border-r text-lg">
                                 {{ $item }}
                             </th>
@@ -24,19 +24,25 @@
                 </thead>
                 <tbody>
 
-
-                    <tr class="bg-white border-b">
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
-                            01193430D
-                        </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
-                            Fuad Muhammed
-                        </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
-                            yes
-                        </td>
-                    </tr>
-
+                    @foreach ($members as $member)
+                        <tr class="bg-white border-b">
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
+                                {{ $member->staff_id }}
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
+                                {{ $member->name }}
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
+                                {{ $member->email }}
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
+                                yes
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
+                                <x-link :route="route('member.edit', $member)">edit</x-link>
+                            </td>
+                        </tr>
+                    @endforeach
 
                 </tbody>
             </table>

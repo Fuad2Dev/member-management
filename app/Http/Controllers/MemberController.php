@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
@@ -13,7 +14,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
+        $members = Member::all();
+        return view('dashboard', compact('members'));
     }
 
     /**
@@ -23,7 +25,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        return view('member.create');
     }
 
     /**
@@ -52,11 +54,11 @@ class MemberController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(Member $member)
     {
-        //
+        return view('member.edit', compact('member'));
     }
 
     /**
