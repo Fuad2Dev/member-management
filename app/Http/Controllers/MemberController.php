@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MemberCreateRequest;
+use App\Http\Requests\MemberRequest;
+use App\Http\Requests\MemberUpdateRequest;
 use App\Models\Member;
 use Illuminate\Http\Request;
 
@@ -34,9 +37,11 @@ class MemberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MemberCreateRequest $request)
     {
-        //
+        Member::create($request->validated());
+
+        return redirect()->route('member.index');
     }
 
     /**
@@ -68,9 +73,11 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MemberUpdateRequest $request, Member $member)
     {
-        //
+        $member->update($request->validated());
+
+        return redirect()->route('member.index');
     }
 
     /**

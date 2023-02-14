@@ -15,11 +15,12 @@
             <table class="w-full border text-center">
                 <thead class="border-b">
                     <tr class="bg-gray-800">
-                        @foreach (['staff ID', 'name', 'email', 'certificate taken', ''] as $item)
+                        @foreach (['staff ID', 'name', 'email', 'certificate taken'] as $item)
                             <th scope="col" class="text-white font-medium px-4 py-2 border-r text-lg">
                                 {{ $item }}
                             </th>
                         @endforeach
+                        {{-- <th class="bg-slate-100 border-slate-100"></th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +41,7 @@
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
                                 <x-link :route="route('member.edit', $member)">edit</x-link>
+                                <x-link :route="route('member.edit', $member)">taken</x-link>
                             </td>
                         </tr>
                     @endforeach

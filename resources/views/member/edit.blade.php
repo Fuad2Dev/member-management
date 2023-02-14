@@ -1,7 +1,7 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('edit') }}">
+    <form method="POST" action="{{ route('member.update', $member) }}">
         @csrf
-
+        @method('put')
         <!-- Staff ID -->
         <div>
             <x-input-label for="name" :value="__('Staff ID')" />
@@ -32,7 +32,7 @@
             </x-link>
 
             <x-primary-button class="ml-4">
-                {{ __('Add') }}
+                {{ __('Update') }}
             </x-primary-button>
         </div>
     </form>
